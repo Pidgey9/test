@@ -8,6 +8,7 @@ public class Particules : MonoBehaviour
     Rigidbody2D rb;
     private Vector3 dir;
     private int count;
+    public AudioSource source;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,15 +16,22 @@ public class Particules : MonoBehaviour
     }
     private void Update()
     {
-        if (count == 0)
+        if(count == 0)
         {
-            dir = (transform.position-Vector3.zero).normalized;
+            dir = (transform.position - Vector3.zero).normalized;
         }
-        rb.velocity = dir * speed;
         if (count == 300)
         {
             Destroy(gameObject);
         } 
         count++;
+        if (Input.GetKey(KeyCode.A))
+        {
+            source.Play();
+        }
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity = dir * speed;
     }
 }

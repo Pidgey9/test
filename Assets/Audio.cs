@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Audio : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource audioQuad;
     private void Start()
     {
-        audioSource.Play();
+        audioQuad.Play();
     }
 }

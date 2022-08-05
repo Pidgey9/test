@@ -9,10 +9,22 @@ public class SoundDetect : MonoBehaviour
     public int speed;
     Rigidbody2D rb;
     public int xpos;
+    public MeshRenderer[] colorChild;
+    private MeshRenderer color;
     private void Awake()
     {
         count = 0;
         rb = GetComponent<Rigidbody2D>();
+        colorChild = this.GetComponentsInChildren<MeshRenderer>();
+        color = GetComponent<MeshRenderer>();
+    }
+    private void Update()
+    {
+        color.material = colorChild[2].material;
+        if (soundPart.isPlaying)
+        {
+            color.material = colorChild[1].material;
+        }
     }
     private void FixedUpdate()
     {
